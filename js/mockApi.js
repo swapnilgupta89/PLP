@@ -1,6 +1,6 @@
 class MockAPI {
-	getFilters(url){
-		this._makeAJAXCall(url).then((resp) => {
+	async getFilters(url){
+		return this._makeAJAXCall(url).then((resp) => {
 			return JSON.parse(resp).filters;
 		})
 		.catch((err) => {
@@ -9,7 +9,7 @@ class MockAPI {
 	}
 
 	getProducts(url){
-		this._makeAJAXCall(url).then((resp) => {
+		return this._makeAJAXCall(url).then((resp) => {
 			return JSON.parse(resp).products;
 		})
 		.catch((err) => {

@@ -1,29 +1,27 @@
-export class PriceFilter{
-	constructor(filters){
-		this.filters = filters[2];
-	}
-	create(id){
-		//create filter here
-	}
-};
+import config from './config';
+import MockAPI from './mockApi';
 
-export class BrandFilter{
-	constructor(filters){
-		this.filters = filters[0];
-	}
-	create(id){
-		//create filter here
-	}
-};
+const mockApi = new MockAPI();
 
 export class ColorFilter{
-	constructor(filters){
-		this.filters = filters[1];
+	constructor(id){
+		this.id = id;
 	}
-	create(id){
-		const filterEls = this.filters.map((el) => {
-			return `<label for=${el.title}></label><input type="checkbox" id=${el.title} value=${el.value}/>`;
+	async create(){
+		this.filters = await mockApi.getFilters(config.filters);
+		this._create(this.filters[1].values);
+	}
+	_create(colorFilters){
+		const filterEls = colorFilters.map((el) => {
+			return `<label for=${el.title}>${el.title}</label><input type="checkbox" id=${el.title} value=${el.color}/>`;
 		});
-		document.getElementById(id).innerHTML = filterEls;
+
+		document.getElementById(this.id).innerHTML = filterEls;
+		
+		this._attachEvents();
+	}
+
+	_attachEvents(){
+		//attach events to this.id
 	}
 };
