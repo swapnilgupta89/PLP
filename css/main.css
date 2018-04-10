@@ -1,0 +1,45 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+body {
+  margin: 0;
+}
+a {
+  background-color: transparent;
+}
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.filters{
+  width: 25%;
+}
+.products{
+  width: 75%;
+}
+*{
+  box-sizing: border-box;
+}
